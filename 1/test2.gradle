@@ -1,0 +1,90 @@
+/**
+ * 练习2
+ * Groovy 高效特性
+ */
+// 1. 可选类型定义
+// 声明一个变量version 不需要像Java一样指明int类型
+def version = 1
+
+// 2. assert 断言
+//assert  version == 2 // 断言失败
+//A problem occurred evaluating root project 'GroovyLearning'.
+//> assert  version == 2
+//|       |
+//1       false
+
+
+// 3. 括号是可选的
+println(version)
+println version
+
+// 4. 字符串
+def s1 = 'karma' // 第一种只指代字符串
+println s1
+
+def s2 = "karma" // 可以在字符串内部添加变量
+def s2_2 = "${s2} is a bitch"
+println s2_2
+
+def s3 = '''karma''' // 内部支持换行
+def s3_3 = '''
+And we stunting like 
+Gucci Gucci Louis Louis Fendi Fendi Prada 
+Them basic wear that so I don't even bother 
+Gucci Gucci Louis Louis Fendi Fendi Prada 
+karma is a bitch
+'''
+println s3_3
+
+
+
+// 5. 集合Api
+// list
+def buildTools = ['ant', 'maven']
+// 追加一个元素
+buildTools << 'gradle'
+println buildTools // 这里打印的不是buildTools对象 而是打印列表中的元素
+println buildTools.getClass() // ArrayList
+println buildTools.size()
+
+// map
+def buildYears = ['ant':2000, 'maven': 2004]
+buildYears.gradle = 2009
+println buildYears
+println buildYears.ant // 获取方式1
+println buildYears['gradle'] // 获取方式2
+println buildYears.getClass() // LinkedHashMap 有序
+println buildYears.size()
+
+
+// 6. 闭包（变量的访问权限 在java中 方法块内声明的变量 只能在方法块内使用， 在python中 函数内声明的变量 不管在不在方法块中 都可以在函数内使用）
+// 声明一个闭包 需要传入参数v
+def c1 = {
+    v ->
+        println '这是执行声明的有參闭包'
+        println v
+}
+
+def c2 = {
+    println '这是执行声明的无參闭包'
+    println 'hello'
+}
+
+// 声明一个函数 需要传递一个闭包为参数
+def method1(Closure closure) {
+    closure('param')
+}
+
+def method2(Closure closure) {
+    closure()
+}
+
+method1(c1)
+method1 {
+    v ->
+        println '这是执行匿名的有參闭包'
+        println v
+}
+method2(c2)
+
+// 理解 闭包相当于一个匿名(也可以声明)方法块 而函数接受方法块后可以执行这个方法块

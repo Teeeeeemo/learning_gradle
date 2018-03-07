@@ -1,0 +1,23 @@
+// 每一个gradle构建的项目 默认都是有一个Project实例的 就是这个文件
+// 构建脚本（不只是这个文件）中的所有代码 默认作用域都是Project
+group 'me.khrystal.groovy'
+version '1.0-SNAPSHOT'
+// project.version = '1.0-SNAPSHOT'
+// project.setVersion('1.0-SNAPSHOT')
+apply plugin: 'java'
+// apply 方法为Project自己的Api 相当于project.apply(['plugin':'java'])
+
+sourceCompatibility = 1.8
+
+// 闭包的匿名调用
+repositories {
+    // 调用project 内部的mavenCentral 函数
+    mavenCentral()
+}
+
+// 闭包的匿名调用
+dependencies {
+    // 调用project内部的testCompile 函数
+    // project.testCompile(['group':'junit', 'name': 'junit', 'version': '4.12'])
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}

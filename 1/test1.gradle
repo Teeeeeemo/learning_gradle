@@ -1,0 +1,41 @@
+/**
+ * 练习1
+ * 在gradle文件中编写Java代码
+ * 可以忽略分号, public关键字
+ * equals不会抛出异常
+ */
+public class ProjectVersion {
+    // 最大版本
+    private int major;
+    // 最小版本
+    private int minor;
+
+    ProjectVersion(int major, int minor) {
+        this.major = major
+        this.minor = minor
+    }
+
+    public int getMajor() {
+        return major
+    }
+
+    public int getMinor() {
+        return minor
+    }
+
+    public void setMajor(int major) {
+        this.major = major
+    }
+
+    public void setMinor(int minor) {
+        this.minor = minor
+    }
+}
+
+ProjectVersion v1 = new ProjectVersion(1, 1);
+println v1.minor
+
+ProjectVersion v2 = null
+
+println v2 == v1 // false
+println v2.equals(v1) // false 没有空指针
