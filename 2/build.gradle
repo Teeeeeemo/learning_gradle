@@ -2,6 +2,7 @@ group 'me.khrystal.gradle'
 version '1.0-SNAPSHOT'
 
 apply plugin: 'java'
+apply plugin: 'war' // 官网查询 支持的插件
 
 sourceCompatibility = 1.8
 
