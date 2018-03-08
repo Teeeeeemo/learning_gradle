@@ -1,4 +1,5 @@
 group 'me.khrystal.gradle'
+//project.setGroup('me.khrystal.gradle')
 version '1.0-SNAPSHOT'
 
 apply plugin: 'java'
@@ -12,3 +13,4 @@ repositories {
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
 }
+
