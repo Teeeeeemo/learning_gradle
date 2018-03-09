@@ -272,7 +272,34 @@ task makeWebDir() {
                         force 'org.slf4j:slf4j-api:1.7.24'
                     }
                 }
-            
+                
+                
+##### 项目模块化
+
+        在企业项目中，包层次和类关系比较复杂，把代码拆分成模块通常是最佳实践
+        这需要你清晰的划分功能边界，比如把业务逻辑和数据持久化拆分开来。
+        项目符合高内聚低耦合时，模块化就变得很容易，这是一条非常好的软件开发实践
+        
+以模块化构建TODO应用程序
+项目结构
+![](http://ww2.sinaimg.cn/large/0060lm7Tly1fp6ovr6ozuj315s0iswfr.jpg)
+
+* Model模块: 放置Java Bean , 数据库的元数据 不进行任何业务的处理
+* Repository模块: 存储数据 需要使用Model中的元数据进行处理
+* Web模块: 人机交互界面, 业务通过界面完成 需要依赖Model与Repository
+
+根据依赖的传递性 Web只需要依赖Repository 就可以依赖Model了 不需要直接依赖Model
+
+配置子项目要求
+1. 所有项目应用Java插件
+2. web子项目打包成war
+3. 所有项目添加logback日志功能
+4. 统一配置公用属性 (version/group等等)
+
+项目范围构建(注 每个项目都有一个build.gradle与之对应)
+
+![](http://ww1.sinaimg.cn/large/0060lm7Tly1fp6p3lsdtzj31a40lu75t.jpg)
+         
             
             
         
