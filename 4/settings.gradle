@@ -1,2 +1,5 @@
 rootProject.name = '4'
+include 'web'
+include 'model'
+include 'repository'
 
